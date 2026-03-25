@@ -1,0 +1,24 @@
+# Web scraping
+trafilatura>=1.7
+requests>=2.31
+beautifulsoup4>=4.12
+playwright>=1.42       # optional: used in the headless browser variant
+
+# NLP
+spacy>=3.7
+# Download models with:
+#   python -m spacy download en_core_web_sm
+#   python -m spacy download en_core_web_lg
+
+# RDF / Semantic Web
+rdflib>=7.0
+SPARQLWrapper>=2.0
+owlready2>=0.46        # Section A of lab5 only
+
+# Knowledge Graph Embeddings
+numpy>=1.26
+scikit-learn>=1.4
+matplotlib>=3.8
+
+# Data utilities
+pandas>=2.1

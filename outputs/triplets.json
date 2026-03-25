@@ -1,0 +1,1132 @@
+[
+  {
+    "sujet": "the U.S. Federal Reserve",
+    "relation": "include",
+    "objet": "the Bank of England"
+  },
+  {
+    "sujet": "the Bank of England",
+    "relation": "include",
+    "objet": "the People’s Bank of China"
+  },
+  {
+    "sujet": "Blockchain Technology",
+    "relation": "keep",
+    "objet": "Bitcoin"
+  },
+  {
+    "sujet": "Satoshi",
+    "relation": "call",
+    "objet": "Satoshi Nakamoto"
+  },
+  {
+    "sujet": "Overstock.com",
+    "relation": "include",
+    "objet": "Newegg - The"
+  },
+  {
+    "sujet": "Newegg - The",
+    "relation": "include",
+    "objet": "CheapAir"
+  },
+  {
+    "sujet": "CheapAir",
+    "relation": "include",
+    "objet": "OKCupid"
+  },
+  {
+    "sujet": "OKCupid",
+    "relation": "include",
+    "objet": "Microsoft"
+  },
+  {
+    "sujet": "Microsoft",
+    "relation": "include",
+    "objet": "Xbox"
+  },
+  {
+    "sujet": "Xbox",
+    "relation": "include",
+    "objet": "Dunkin Donuts"
+  },
+  {
+    "sujet": "Dunkin Donuts",
+    "relation": "include",
+    "objet": "Best Buy"
+  },
+  {
+    "sujet": "Best Buy",
+    "relation": "include",
+    "objet": "Home Depot"
+  },
+  {
+    "sujet": "Home Depot",
+    "relation": "include",
+    "objet": "Flexa"
+  },
+  {
+    "sujet": "BTC",
+    "relation": "trade",
+    "objet": "XBT"
+  },
+  {
+    "sujet": "https://www.thestreet.com/investing/bitcoin/what-can-you-buy-with-bitcoin-14556706](https://www.thestreet.com/investing/bitcoin/what-can-you-buy-with-bitcoin-14556706",
+    "relation": "use",
+    "objet": "Gemini"
+  },
+  {
+    "sujet": "Gemini",
+    "relation": "use",
+    "objet": "Wikipedia"
+  },
+  {
+    "sujet": "Wikipedia",
+    "relation": "use",
+    "objet": "Cryptopedia"
+  },
+  {
+    "sujet": "Cryptopedia",
+    "relation": "express",
+    "objet": "Gemini"
+  },
+  {
+    "sujet": "Bitcoin Read More >> With Bit",
+    "relation": "explore",
+    "objet": "Nick Szabo"
+  },
+  {
+    "sujet": "PoW",
+    "relation": "’",
+    "objet": "the Byzantine Generals Problem"
+  },
+  {
+    "sujet": "Bitcoin",
+    "relation": "represent",
+    "objet": "Visa"
+  },
+  {
+    "sujet": "the Lightning Network",
+    "relation": "remove",
+    "objet": "Bitcoin"
+  },
+  {
+    "sujet": "El Salvador",
+    "relation": "adopt",
+    "objet": "El Salvador’s"
+  },
+  {
+    "sujet": "the Lighting Network",
+    "relation": "develop",
+    "objet": "the Liquid Network"
+  },
+  {
+    "sujet": "SHA-256",
+    "relation": "consider",
+    "objet": "the U.S. National Security Agency"
+  },
+  {
+    "sujet": "the U.S. National Security Agency",
+    "relation": "consider",
+    "objet": "NSA"
+  },
+  {
+    "sujet": "Lindy",
+    "relation": "consider",
+    "objet": "Bitcoin"
+  },
+  {
+    "sujet": "Jack Dorsey",
+    "relation": "add",
+    "objet": "Elon Musk"
+  },
+  {
+    "sujet": "Elon Musk",
+    "relation": "add",
+    "objet": "Tesla"
+  },
+  {
+    "sujet": "Tesla",
+    "relation": "add",
+    "objet": "Michael Saylor"
+  },
+  {
+    "sujet": "Michael Saylor",
+    "relation": "add",
+    "objet": "Ray Dalio"
+  },
+  {
+    "sujet": "Ray Dalio",
+    "relation": "add",
+    "objet": "Bitcoin"
+  },
+  {
+    "sujet": "Bitcoin",
+    "relation": "mine",
+    "objet": "CPU"
+  },
+  {
+    "sujet": "CPU",
+    "relation": "mine",
+    "objet": "Satoshi"
+  },
+  {
+    "sujet": "U.S.",
+    "relation": "lead",
+    "objet": "Richard Nixon"
+  },
+  {
+    "sujet": "Richard Nixon",
+    "relation": "lead",
+    "objet": "U.S."
+  },
+  {
+    "sujet": "Bitcoin Automated Teller Machines",
+    "relation": "call",
+    "objet": "Bitcoin Teller Machines"
+  },
+  {
+    "sujet": "Bitcoin Lastly",
+    "relation": "read",
+    "objet": "Bitcoin"
+  },
+  {
+    "sujet": "Tags Bitcoin Guide Share",
+    "relation": "build",
+    "objet": "Twitter Linkedin"
+  },
+  {
+    "sujet": "Twitter Linkedin",
+    "relation": "build",
+    "objet": "Virtu Financial For Pending Spot"
+  },
+  {
+    "sujet": "Virtu Financial For Pending Spot",
+    "relation": "build",
+    "objet": "Bitcoin Amsterdam"
+  },
+  {
+    "sujet": "Bitcoin Amsterdam",
+    "relation": "build",
+    "objet": "BitcoinNetwork.ie"
+  },
+  {
+    "sujet": "BitcoinNetwork.ie",
+    "relation": "build",
+    "objet": "Ireland"
+  },
+  {
+    "sujet": "the Best Bitcoin Consultants To Help You Secure Your Bitcoin",
+    "relation": "relate",
+    "objet": "PGP"
+  },
+  {
+    "sujet": "PGP",
+    "relation": "relate",
+    "objet": "Enhanced Privacy"
+  },
+  {
+    "sujet": "Enhanced Privacy",
+    "relation": "relate",
+    "objet": "GUIDES How Local Businesses Can Use Bitcoin For Payments February 20, 2025"
+  },
+  {
+    "sujet": "GUIDES How Local Businesses Can Use Bitcoin For Payments February 20, 2025",
+    "relation": "relate",
+    "objet": "Bitcoin Portfolio Tracker & Media"
+  },
+  {
+    "sujet": "Phong Le Calls Morgan Stanley’s BTC",
+    "relation": "hold",
+    "objet": "War-Driven Inflation Fears Meet Defensive Market Positioning"
+  },
+  {
+    "sujet": "Trump",
+    "relation": "stop",
+    "objet": "Kamala"
+  },
+  {
+    "sujet": "Canada",
+    "relation": "elect",
+    "objet": "The Next Bitcoin World"
+  },
+  {
+    "sujet": "US",
+    "relation": "publish",
+    "objet": "BTC Inc."
+  },
+  {
+    "sujet": "BTC Inc.",
+    "relation": "publish",
+    "objet": "Nakamoto Inc."
+  },
+  {
+    "sujet": "Nakamoto Inc.",
+    "relation": "publish",
+    "objet": "NAKA"
+  },
+  {
+    "sujet": "BTC",
+    "relation": "work",
+    "objet": "Ledger Wallet"
+  },
+  {
+    "sujet": "Ledger Wallet",
+    "relation": "work",
+    "objet": "Meet Ledger Nano"
+  },
+  {
+    "sujet": "Meet Ledger Nano",
+    "relation": "work",
+    "objet": "Bitcoin"
+  },
+  {
+    "sujet": "Satoshi Nakamoto",
+    "relation": "challenge",
+    "objet": "Bitcoin"
+  },
+  {
+    "sujet": "Ledger Academy",
+    "relation": "explain",
+    "objet": "Bitcoin"
+  },
+  {
+    "sujet": "Energy Consumption and Proof-of-Work Proof-of-work",
+    "relation": "use",
+    "objet": "PoW"
+  },
+  {
+    "sujet": "PoW",
+    "relation": "use",
+    "objet": "Bitcoin"
+  },
+  {
+    "sujet": "Bitcoin’s Scalability, Decentralization",
+    "relation": "contend",
+    "objet": "Upgrades Bitcoin"
+  },
+  {
+    "sujet": "SegWit",
+    "relation": "include",
+    "objet": "SegWit"
+  },
+  {
+    "sujet": "SegWit",
+    "relation": "include",
+    "objet": "Bitcoin"
+  },
+  {
+    "sujet": "BIPs",
+    "relation": "focus",
+    "objet": "Bitcoin"
+  },
+  {
+    "sujet": "SegWit",
+    "relation": "resolve",
+    "objet": "Lightning Network"
+  },
+  {
+    "sujet": "Bitcoin",
+    "relation": "increase",
+    "objet": "Satoshi Nakamoto"
+  },
+  {
+    "sujet": "Digital Ownership Explained",
+    "relation": "explain",
+    "objet": "Bitcoin"
+  },
+  {
+    "sujet": "Bitcoin",
+    "relation": "purchase",
+    "objet": "Bitcoin"
+  },
+  {
+    "sujet": "Bitcoin",
+    "relation": "control",
+    "objet": "Bitcoin"
+  },
+  {
+    "sujet": "Digital Ownership: True Bitcoin Ownership One",
+    "relation": "allude",
+    "objet": "Bitcoin"
+  },
+  {
+    "sujet": "PIN",
+    "relation": "initialize",
+    "objet": "SRP"
+  },
+  {
+    "sujet": "Bitcoin",
+    "relation": "install",
+    "objet": "Ledger Wallet TM"
+  },
+  {
+    "sujet": "Select Asset and Service Provider",
+    "relation": "select",
+    "objet": "BTC"
+  },
+  {
+    "sujet": "BTC",
+    "relation": "select",
+    "objet": "MoonPay"
+  },
+  {
+    "sujet": "MoonPay",
+    "relation": "select",
+    "objet": "Coinbase Pay"
+  },
+  {
+    "sujet": "Coinbase Pay",
+    "relation": "select",
+    "objet": "Topper"
+  },
+  {
+    "sujet": "USD",
+    "relation": "specify",
+    "objet": "EUR"
+  },
+  {
+    "sujet": "EUR",
+    "relation": "specify",
+    "objet": "Ledger Wallet TM"
+  },
+  {
+    "sujet": "BTC",
+    "relation": "store",
+    "objet": "Bitcoin"
+  },
+  {
+    "sujet": "SRP",
+    "relation": "share",
+    "objet": "PIN"
+  },
+  {
+    "sujet": "Bitcoin",
+    "relation": "coin",
+    "objet": "Satoshi Nakamoto"
+  },
+  {
+    "sujet": "Beginner Introduction",
+    "relation": "read",
+    "objet": "Smart Contract Risks Read 7"
+  },
+  {
+    "sujet": "Smart Contract Risks Read 7",
+    "relation": "read",
+    "objet": "Medium Zooming"
+  },
+  {
+    "sujet": "Medium Zooming",
+    "relation": "read",
+    "objet": "Project Teams & Founders Read"
+  },
+  {
+    "sujet": "Project Teams & Founders Read",
+    "relation": "read",
+    "objet": "Beginner"
+  },
+  {
+    "sujet": "Beginner Stay",
+    "relation": "stay",
+    "objet": "Announcements"
+  },
+  {
+    "sujet": "Ledger",
+    "relation": "stay",
+    "objet": "Register Your"
+  },
+  {
+    "sujet": "Bitcoin.org",
+    "relation": "get",
+    "objet": "White paper Resources Resources Exchanges Community Documentation Vocabulary Events Bitcoin Core Innovation Participate Support Bitcoin Buy Bitcoin"
+  },
+  {
+    "sujet": "White paper Resources Resources Exchanges Community Documentation Vocabulary Events Bitcoin Core Innovation Participate Support Bitcoin Buy Bitcoin",
+    "relation": "get",
+    "objet": "Development FAQ"
+  },
+  {
+    "sujet": "Development FAQ",
+    "relation": "get",
+    "objet": "Bahasa"
+  },
+  {
+    "sujet": "Bahasa",
+    "relation": "get",
+    "objet": "Indonesia"
+  },
+  {
+    "sujet": "Dansk",
+    "relation": "ÑÑÐºÐ¸",
+    "objet": "Italiano Magyar Nederlands Polski PortuguÃªs"
+  },
+  {
+    "sujet": "Italiano Magyar Nederlands Polski PortuguÃªs",
+    "relation": "ÑÑÐºÐ¸",
+    "objet": "Brasil RomÃ¢nÄ SlovenÅ¡Äina"
+  },
+  {
+    "sujet": "Brasil RomÃ¢nÄ SlovenÅ¡Äina",
+    "relation": "ÑÑÐºÐ¸",
+    "objet": "Srpski Svenska"
+  },
+  {
+    "sujet": "Srpski Svenska",
+    "relation": "ÑÑÐºÐ¸",
+    "objet": "Ð±ÑÐ»Ð³Ð"
+  },
+  {
+    "sujet": "Ð±ÑÐ»Ð³Ð",
+    "relation": "ÑÑÐºÐ¸",
+    "objet": "¦"
+  },
+  {
+    "sujet": "¦",
+    "relation": "ÑÑÐºÐ¸",
+    "objet": "ä½ä¸­æ ç¹é«ä¸­æ"
+  },
+  {
+    "sujet": "ä½ä¸­æ ç¹é«ä¸­æ",
+    "relation": "ÑÑÐºÐ¸",
+    "objet": "Bahasa"
+  },
+  {
+    "sujet": "Bahasa",
+    "relation": "ÑÑÐºÐ¸",
+    "objet": "Indonesia"
+  },
+  {
+    "sujet": "¦",
+    "relation": "secure",
+    "objet": "ä½ä¸­æ ç¹é«ä¸­æ Language"
+  },
+  {
+    "sujet": "ä½ä¸­æ ç¹é«ä¸­æ Language",
+    "relation": "secure",
+    "objet": "Securing"
+  },
+  {
+    "sujet": "Backup",
+    "relation": "view",
+    "objet": "Backup"
+  },
+  {
+    "sujet": "Bitcoin.org",
+    "relation": "start",
+    "objet": "Bitcoin Buy Bitcoin"
+  },
+  {
+    "sujet": "MIT",
+    "relation": "release",
+    "objet": "Network Status"
+  },
+  {
+    "sujet": "Network Status",
+    "relation": "release",
+    "objet": "Bahasa"
+  },
+  {
+    "sujet": "Bahasa",
+    "relation": "release",
+    "objet": "Indonesia"
+  },
+  {
+    "sujet": "PoW",
+    "relation": "open",
+    "objet": "ethereum.org Skip"
+  },
+  {
+    "sujet": "ethereum.org Skip",
+    "relation": "open",
+    "objet": "PoW"
+  },
+  {
+    "sujet": "PoW",
+    "relation": "open",
+    "objet": "Ethereum"
+  },
+  {
+    "sujet": "Ethereum",
+    "relation": "open",
+    "objet": "PoW"
+  },
+  {
+    "sujet": "Ethereum",
+    "relation": "allow",
+    "objet": "Ethereum"
+  },
+  {
+    "sujet": "Nakamoto",
+    "relation": "utilize",
+    "objet": "Ethereum"
+  },
+  {
+    "sujet": "Ethereum",
+    "relation": "create",
+    "objet": "PoW"
+  },
+  {
+    "sujet": "Constantinople",
+    "relation": "create",
+    "objet": "ETH"
+  },
+  {
+    "sujet": "Ethereum",
+    "relation": "mine",
+    "objet": "N"
+  },
+  {
+    "sujet": "ETH",
+    "relation": "need",
+    "objet": "0ETH"
+  },
+  {
+    "sujet": "Bitcoin",
+    "relation": "test",
+    "objet": "Ethereum"
+  },
+  {
+    "sujet": "Proof-of-authority",
+    "relation": "open",
+    "objet": "↑"
+  },
+  {
+    "sujet": "U.S.",
+    "relation": "control",
+    "objet": "Bitcoin"
+  },
+  {
+    "sujet": "Bitcoinâs",
+    "relation": "explain",
+    "objet": "Satoshi Nakamoto"
+  },
+  {
+    "sujet": "Satoshi Nakamoto",
+    "relation": "explain",
+    "objet": "Bitcoinâs"
+  },
+  {
+    "sujet": "Bitcoin",
+    "relation": "learn",
+    "objet": "Bitcoin"
+  },
+  {
+    "sujet": "Bitcoin - Wikipedia Jump",
+    "relation": "see",
+    "objet": "Wikipedia"
+  },
+  {
+    "sujet": "Bitcoin Commonly",
+    "relation": "use",
+    "objet": "Symbol ₿"
+  },
+  {
+    "sujet": "Active Written",
+    "relation": "start",
+    "objet": "C++ Source model Free"
+  },
+  {
+    "sujet": "C++ Source model Free",
+    "relation": "start",
+    "objet": "License MIT License"
+  },
+  {
+    "sujet": "SHA-256",
+    "relation": "timestampe",
+    "objet": "Decentralized"
+  },
+  {
+    "sujet": "Valuation Exchange",
+    "relation": "float",
+    "objet": "Floating Website Website"
+  },
+  {
+    "sujet": "Cynthia Dwork",
+    "relation": "propose",
+    "objet": "Moni Naor"
+  },
+  {
+    "sujet": "Adam Back",
+    "relation": "rediscover",
+    "objet": "Hashcash"
+  },
+  {
+    "sujet": "Wei Dai",
+    "relation": "distribute",
+    "objet": "Nick Szabo"
+  },
+  {
+    "sujet": "Chaum",
+    "relation": "require",
+    "objet": "Hashcash"
+  },
+  {
+    "sujet": "Hal Finney",
+    "relation": "receive",
+    "objet": "Nakamoto"
+  },
+  {
+    "sujet": "Satoshi",
+    "relation": "task",
+    "objet": "Martti Malmi"
+  },
+  {
+    "sujet": "Blockchain",
+    "relation": "estimate",
+    "objet": "Nakamoto"
+  },
+  {
+    "sujet": "Nakamoto",
+    "relation": "estimate",
+    "objet": "Gavin Andresen"
+  },
+  {
+    "sujet": "Andresen",
+    "relation": "become",
+    "objet": "the Bitcoin Foundation"
+  },
+  {
+    "sujet": "FBI",
+    "relation": "seize",
+    "objet": "Ross Ulbricht"
+  },
+  {
+    "sujet": "SegWit",
+    "relation": "support",
+    "objet": "Bitcoin Cash"
+  },
+  {
+    "sujet": "the Chicago Mercantile Exchange",
+    "relation": "introduce",
+    "objet": "CME"
+  },
+  {
+    "sujet": "MicroStrategy",
+    "relation": "start",
+    "objet": "treasury reserve"
+  },
+  {
+    "sujet": "treasury reserve",
+    "relation": "start",
+    "objet": "MassMutual"
+  },
+  {
+    "sujet": "PayPal",
+    "relation": "add",
+    "objet": "US"
+  },
+  {
+    "sujet": "Taproot",
+    "relation": "activate",
+    "objet": "Schnorr"
+  },
+  {
+    "sujet": "Schnorr",
+    "relation": "activate",
+    "objet": "Lightning Network"
+  },
+  {
+    "sujet": "El Salvador",
+    "relation": "become",
+    "objet": "US"
+  },
+  {
+    "sujet": "BITO",
+    "relation": "trade",
+    "objet": "ProShares"
+  },
+  {
+    "sujet": "ProShares",
+    "relation": "trade",
+    "objet": "SEC"
+  },
+  {
+    "sujet": "SEC",
+    "relation": "trade",
+    "objet": "CME"
+  },
+  {
+    "sujet": "TerraUSD",
+    "relation": "fall",
+    "objet": "the Celsius Network"
+  },
+  {
+    "sujet": "US",
+    "relation": "reach",
+    "objet": "Donald Trump"
+  },
+  {
+    "sujet": "Donald Trump",
+    "relation": "reach",
+    "objet": "US"
+  },
+  {
+    "sujet": "U.S.",
+    "relation": "institute",
+    "objet": "Texas"
+  },
+  {
+    "sujet": "Texas",
+    "relation": "institute",
+    "objet": "New Hampshire"
+  },
+  {
+    "sujet": "New Hampshire",
+    "relation": "institute",
+    "objet": "the Czech National Bank"
+  },
+  {
+    "sujet": "Design Main",
+    "relation": "make",
+    "objet": "Bitcoin"
+  },
+  {
+    "sujet": "Bitcoin",
+    "relation": "make",
+    "objet": "Satoshi Nakamoto"
+  },
+  {
+    "sujet": "BTC",
+    "relation": "conform",
+    "objet": "ISO 4217"
+  },
+  {
+    "sujet": "ISO 4217",
+    "relation": "conform",
+    "objet": "BT"
+  },
+  {
+    "sujet": "BT",
+    "relation": "conform",
+    "objet": "Bhutan"
+  },
+  {
+    "sujet": "Blockchain Further",
+    "relation": "operate",
+    "objet": "Blockchain § Structure"
+  },
+  {
+    "sujet": "the Cambridge Centre for Alternative Finance",
+    "relation": "review",
+    "objet": "CCAF"
+  },
+  {
+    "sujet": "CCAF",
+    "relation": "review",
+    "objet": "Slovakia"
+  },
+  {
+    "sujet": "US",
+    "relation": "follow",
+    "objet": "Russia"
+  },
+  {
+    "sujet": "Russia",
+    "relation": "follow",
+    "objet": "China"
+  },
+  {
+    "sujet": "Bitcoin",
+    "relation": "name",
+    "objet": "Satoshi"
+  },
+  {
+    "sujet": "Satoshi",
+    "relation": "name",
+    "objet": "Nakamoto"
+  },
+  {
+    "sujet": "Bitcoin Core",
+    "relation": "exist",
+    "objet": "Bitcoin Unlimited"
+  },
+  {
+    "sujet": "Main",
+    "relation": "challenge",
+    "objet": "Nakamoto"
+  },
+  {
+    "sujet": "Main",
+    "relation": "accord",
+    "objet": "Bitcoin"
+  },
+  {
+    "sujet": "Bitcoin",
+    "relation": "accord",
+    "objet": "the European Central Bank"
+  },
+  {
+    "sujet": "the European Central Bank",
+    "relation": "accord",
+    "objet": "Friedrich Hayek 's"
+  },
+  {
+    "sujet": "Friedrich Hayek 's",
+    "relation": "accord",
+    "objet": "The Denationalisation of Money"
+  },
+  {
+    "sujet": "Robert J. Shiller",
+    "relation": "write",
+    "objet": "Chile"
+  },
+  {
+    "sujet": "Chile",
+    "relation": "write",
+    "objet": "Unidad de Fomento"
+  },
+  {
+    "sujet": "François Velde",
+    "relation": "describe",
+    "objet": "the Chicago Fed"
+  },
+  {
+    "sujet": "Algeria",
+    "relation": "apply",
+    "objet": "Bangladesh"
+  },
+  {
+    "sujet": "Bangladesh",
+    "relation": "apply",
+    "objet": "China"
+  },
+  {
+    "sujet": "China",
+    "relation": "apply",
+    "objet": "Egypt"
+  },
+  {
+    "sujet": "Egypt",
+    "relation": "apply",
+    "objet": "Iraq"
+  },
+  {
+    "sujet": "Iraq",
+    "relation": "apply",
+    "objet": "Morocco"
+  },
+  {
+    "sujet": "Morocco",
+    "relation": "apply",
+    "objet": "Nepal"
+  },
+  {
+    "sujet": "Nepal",
+    "relation": "apply",
+    "objet": "Qatar"
+  },
+  {
+    "sujet": "Qatar",
+    "relation": "apply",
+    "objet": "Tunisia"
+  },
+  {
+    "sujet": "Café",
+    "relation": "use",
+    "objet": "Bitcoin"
+  },
+  {
+    "sujet": "Bitcoin",
+    "relation": "use",
+    "objet": "Harvard"
+  },
+  {
+    "sujet": "Harvard",
+    "relation": "use",
+    "objet": "Kenneth Rogoff"
+  },
+  {
+    "sujet": "Bloomberg",
+    "relation": "report",
+    "objet": "Overstock.com"
+  },
+  {
+    "sujet": "El Salvador",
+    "relation": "make",
+    "objet": "US"
+  },
+  {
+    "sujet": "the International Monetary Fund",
+    "relation": "urge",
+    "objet": "El Salvador"
+  },
+  {
+    "sujet": "El Salvador's",
+    "relation": "revoke",
+    "objet": "IMF"
+  },
+  {
+    "sujet": "El Salvador",
+    "relation": "describe",
+    "objet": "US"
+  },
+  {
+    "sujet": "US",
+    "relation": "describe",
+    "objet": "El Salvador"
+  },
+  {
+    "sujet": "the Central African Republic",
+    "relation": "adopt",
+    "objet": "CAR"
+  },
+  {
+    "sujet": "Iran",
+    "relation": "require",
+    "objet": "the Central Bank of Iran"
+  },
+  {
+    "sujet": "Colorado",
+    "relation": "accept",
+    "objet": "US"
+  },
+  {
+    "sujet": "US",
+    "relation": "accept",
+    "objet": "Zug"
+  },
+  {
+    "sujet": "Zug",
+    "relation": "accept",
+    "objet": "Lugano"
+  },
+  {
+    "sujet": "Lugano",
+    "relation": "accept",
+    "objet": "Switzerland"
+  },
+  {
+    "sujet": "Winklevoss",
+    "relation": "use",
+    "objet": "Tesla"
+  },
+  {
+    "sujet": "The Journal of Finance",
+    "relation": "publish",
+    "objet": "Tether"
+  },
+  {
+    "sujet": "Tether",
+    "relation": "publish",
+    "objet": "Bitfinex"
+  },
+  {
+    "sujet": "Economics",
+    "relation": "describe",
+    "objet": "Joseph Stiglitz"
+  },
+  {
+    "sujet": "Joseph Stiglitz",
+    "relation": "describe",
+    "objet": "James Heckman"
+  },
+  {
+    "sujet": "James Heckman",
+    "relation": "describe",
+    "objet": "Paul Krugman"
+  },
+  {
+    "sujet": "Federal Reserve",
+    "relation": "describe",
+    "objet": "Jerome Powell"
+  },
+  {
+    "sujet": "Kenneth Rogoff",
+    "relation": "claim",
+    "objet": "Krugman"
+  },
+  {
+    "sujet": "Krugman",
+    "relation": "claim",
+    "objet": "Bitcoin"
+  },
+  {
+    "sujet": "The Journal of Alternative Investments",
+    "relation": "accord",
+    "objet": "US Treasuries"
+  },
+  {
+    "sujet": "Berlin",
+    "relation": "retrieve",
+    "objet": "Heidelberg"
+  },
+  {
+    "sujet": "Heidelberg",
+    "relation": "retrieve",
+    "objet": "Berlin Heidelberg"
+  },
+  {
+    "sujet": "Berlin Heidelberg",
+    "relation": "retrieve",
+    "objet": "pp"
+  },
+  {
+    "sujet": "Hal Finney",
+    "relation": "die",
+    "objet": "Cryptographer"
+  },
+  {
+    "sujet": "Cryptographer",
+    "relation": "die",
+    "objet": "Bitcoin Pioneer"
+  },
+  {
+    "sujet": "US",
+    "relation": "comply",
+    "objet": "Bitcoin Exchanges Must Comply With Money Laundering Laws"
+  },
+  {
+    "sujet": "U.S.",
+    "relation": "make",
+    "objet": "Bitcoin"
+  },
+  {
+    "sujet": "FBI",
+    "relation": "seize",
+    "objet": "Plan For The Millions Worth Of Bitcoins Seized From Silk Road"
+  },
+  {
+    "sujet": "PayPal",
+    "relation": "say",
+    "objet": "US"
+  },
+  {
+    "sujet": "Texas",
+    "relation": "create",
+    "objet": "Abbott Signs Bill"
+  },
+  {
+    "sujet": "Abbott Signs Bill",
+    "relation": "create",
+    "objet": "Create State Bitcoin Reserve"
+  },
+  {
+    "sujet": "XBT",
+    "relation": "satisfy",
+    "objet": "the International Organisation for Standardisation (ISO"
+  },
+  {
+    "sujet": "the International Organisation for Standardisation (ISO",
+    "relation": "satisfy",
+    "objet": "BTC"
+  },
+  {
+    "sujet": "BTC",
+    "relation": "satisfy",
+    "objet": "Bhutan"
+  },
+  {
+    "sujet": "X. However",
+    "relation": "begin",
+    "objet": "XBT"
+  },
+  {
+    "sujet": "XBT",
+    "relation": "begin",
+    "objet": "ISO"
+  },
+  {
+    "sujet": "Bitcoin",
+    "relation": "bitcoin",
+    "objet": "Oxford Advanced Learner's"
+  }
+]

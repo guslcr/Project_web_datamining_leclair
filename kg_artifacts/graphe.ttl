@@ -1,0 +1,402 @@
+@prefix lab: <http://lab_web4.org/entity/> .
+@prefix ns1: <http://lab_web4.org/entity/%> .
+
+lab:Active_Written lab:start lab:C%2B%2B_Source_model_Free .
+
+lab:Adam_Back lab:rediscover lab:Hashcash .
+
+lab:Algeria lab:apply lab:Bangladesh .
+
+lab:Andresen lab:become lab:the_Bitcoin_Foundation .
+
+lab:BIPs lab:focus lab:Bitcoin .
+
+lab:BITO lab:trade lab:ProShares .
+
+lab:Beginner_Introduction lab:read lab:Smart_Contract_Risks_Read_7 .
+
+lab:Beginner_Stay lab:stay lab:Announcements .
+
+lab:Berlin lab:retrieve lab:Heidelberg .
+
+lab:Bitcoin%E2%80%99s_Scalability%2C_Decentralization lab:contend lab:Upgrades_Bitcoin .
+
+lab:Bitcoin.org lab:get lab:White_paper_Resources_Resources_Exchanges_Community_Documentation_Vocabulary_Events_Bitcoin_Core_Innovation_Participate_Support_Bitcoin_Buy_Bitcoin ;
+    lab:start lab:Bitcoin_Buy_Bitcoin .
+
+lab:Bitcoin_-_Wikipedia_Jump lab:see lab:Wikipedia .
+
+lab:Bitcoin_Automated_Teller_Machines lab:call lab:Bitcoin_Teller_Machines .
+
+lab:Bitcoin_Commonly lab:use lab:Symbol_%E2%82%BF .
+
+lab:Bitcoin_Core lab:exist lab:Bitcoin_Unlimited .
+
+lab:Bitcoin_Lastly lab:read lab:Bitcoin .
+
+lab:Bitcoin_Read_More_%3E%3E_With_Bit lab:explore lab:Nick_Szabo .
+
+lab:Blockchain lab:estimate lab:Nakamoto .
+
+lab:Blockchain_Further lab:operate lab:Blockchain_%C2%A7_Structure .
+
+lab:Blockchain_Technology lab:keep lab:Bitcoin .
+
+lab:Bloomberg lab:report lab:Overstock.com .
+
+lab:Caf%C3%A9 lab:use lab:Bitcoin .
+
+lab:Canada lab:elect lab:The_Next_Bitcoin_World .
+
+lab:Chaum lab:require lab:Hashcash .
+
+lab:Colorado lab:accept lab:US .
+
+lab:Constantinople lab:create lab:ETH .
+
+lab:Cynthia_Dwork lab:propose lab:Moni_Naor .
+
+lab:Dansk ns1:C3%91%C2%80%C3%91%C2%81%C3%90%C2%BA%C3%90%C2%B8 lab:Italiano_Magyar_Nederlands_Polski_Portugu%C3%83%C2%AAs .
+
+lab:Design_Main lab:make lab:Bitcoin .
+
+lab:Digital_Ownership%3A_True_Bitcoin_Ownership_One lab:allude lab:Bitcoin .
+
+lab:Digital_Ownership_Explained lab:explain lab:Bitcoin .
+
+lab:Economics lab:describe lab:Joseph_Stiglitz .
+
+lab:El_Salvador%27s lab:revoke lab:IMF .
+
+lab:Energy_Consumption_and_Proof-of-Work_Proof-of-work lab:use lab:PoW .
+
+lab:FBI lab:seize lab:Plan_For_The_Millions_Worth_Of_Bitcoins_Seized_From_Silk_Road,
+        lab:Ross_Ulbricht .
+
+lab:Federal_Reserve lab:describe lab:Jerome_Powell .
+
+lab:Fran%C3%A7ois_Velde lab:describe lab:the_Chicago_Fed .
+
+lab:Hal_Finney lab:die lab:Cryptographer ;
+    lab:receive lab:Nakamoto .
+
+lab:Iran lab:require lab:the_Central_Bank_of_Iran .
+
+lab:Jack_Dorsey lab:add lab:Elon_Musk .
+
+lab:Ledger lab:stay lab:Register_Your .
+
+lab:Ledger_Academy lab:explain lab:Bitcoin .
+
+lab:Lindy lab:consider lab:Bitcoin .
+
+lab:MIT lab:release lab:Network_Status .
+
+lab:Main lab:accord lab:Bitcoin ;
+    lab:challenge lab:Nakamoto .
+
+lab:MicroStrategy lab:start lab:treasury_reserve .
+
+lab:PayPal lab:add lab:US ;
+    lab:say lab:US .
+
+lab:Phong_Le_Calls_Morgan_Stanley%E2%80%99s_BTC lab:hold lab:War-Driven_Inflation_Fears_Meet_Defensive_Market_Positioning .
+
+lab:Proof-of-authority lab:open ns1:E2%86%91 .
+
+lab:Robert_J._Shiller lab:write lab:Chile .
+
+lab:SHA-256 lab:consider lab:the_U.S._National_Security_Agency ;
+    lab:timestampe lab:Decentralized .
+
+lab:Select_Asset_and_Service_Provider lab:select lab:BTC .
+
+lab:Tags_Bitcoin_Guide_Share lab:build lab:Twitter_Linkedin .
+
+lab:Taproot lab:activate lab:Schnorr .
+
+lab:TerraUSD lab:fall lab:the_Celsius_Network .
+
+lab:The_Journal_of_Alternative_Investments lab:accord lab:US_Treasuries .
+
+lab:The_Journal_of_Finance lab:publish lab:Tether .
+
+lab:Trump lab:stop lab:Kamala .
+
+lab:USD lab:specify lab:EUR .
+
+lab:Valuation_Exchange lab:float lab:Floating_Website_Website .
+
+lab:Wei_Dai lab:distribute lab:Nick_Szabo .
+
+lab:Winklevoss lab:use lab:Tesla .
+
+lab:X._However lab:begin lab:XBT .
+
+<http://lab_web4.org/entity/https%3A//www.thestreet.com/investing/bitcoin/what-can-you-buy-with-bitcoin-14556706%5D%28https%3A//www.thestreet.com/investing/bitcoin/what-can-you-buy-with-bitcoin-14556706> lab:use lab:Gemini .
+
+lab:the_Best_Bitcoin_Consultants_To_Help_You_Secure_Your_Bitcoin lab:relate lab:PGP .
+
+lab:the_Cambridge_Centre_for_Alternative_Finance lab:review lab:CCAF .
+
+lab:the_Central_African_Republic lab:adopt lab:CAR .
+
+lab:the_Chicago_Mercantile_Exchange lab:introduce lab:CME .
+
+lab:the_International_Monetary_Fund lab:urge lab:El_Salvador .
+
+lab:the_Lighting_Network lab:develop lab:the_Liquid_Network .
+
+lab:the_Lightning_Network lab:remove lab:Bitcoin .
+
+lab:the_U.S._Federal_Reserve lab:include lab:the_Bank_of_England .
+
+ns1:C2%80%C3%A4%C2%BD%C2%93%C3%A4%C2%B8%C2%AD%C3%A6%C2%96%C2%87_%C3%A7%C2%B9%C2%81%C3%A9%C2%AB%C2%94%C3%A4%C2%B8%C2%AD%C3%A6%C2%96%C2%87 ns1:C3%91%C2%80%C3%91%C2%81%C3%90%C2%BA%C3%90%C2%B8 lab:Bahasa .
+
+ns1:C2%80%C3%A4%C2%BD%C2%93%C3%A4%C2%B8%C2%AD%C3%A6%C2%96%C2%87_%C3%A7%C2%B9%C2%81%C3%A9%C2%AB%C2%94%C3%A4%C2%B8%C2%AD%C3%A6%C2%96%C2%87_Language lab:secure lab:Securing .
+
+ns1:C2%A6 ns1:C3%91%C2%80%C3%91%C2%81%C3%90%C2%BA%C3%90%C2%B8 ns1:C2%80%C3%A4%C2%BD%C2%93%C3%A4%C2%B8%C2%AD%C3%A6%C2%96%C2%87_%C3%A7%C2%B9%C2%81%C3%A9%C2%AB%C2%94%C3%A4%C2%B8%C2%AD%C3%A6%C2%96%C2%87 ;
+    lab:secure ns1:C2%80%C3%A4%C2%BD%C2%93%C3%A4%C2%B8%C2%AD%C3%A6%C2%96%C2%87_%C3%A7%C2%B9%C2%81%C3%A9%C2%AB%C2%94%C3%A4%C2%B8%C2%AD%C3%A6%C2%96%C2%87_Language .
+
+ns1:C3%90%C2%B1%C3%91%C2%8A%C3%90%C2%BB%C3%90%C2%B3%C3%90 ns1:C3%91%C2%80%C3%91%C2%81%C3%90%C2%BA%C3%90%C2%B8 ns1:C2%A6 .
+
+lab:Abbott_Signs_Bill lab:create lab:Create_State_Bitcoin_Reserve .
+
+lab:BT lab:conform lab:Bhutan .
+
+<http://lab_web4.org/entity/BTC_Inc.> lab:publish <http://lab_web4.org/entity/Nakamoto_Inc.> .
+
+lab:Backup lab:view lab:Backup .
+
+lab:Bangladesh lab:apply lab:China .
+
+lab:Berlin_Heidelberg lab:retrieve lab:pp .
+
+lab:Best_Buy lab:include lab:Home_Depot .
+
+lab:Bitcoin%C3%A2%C2%80%C2%99s lab:explain lab:Satoshi_Nakamoto .
+
+lab:BitcoinNetwork.ie lab:build lab:Ireland .
+
+lab:Bitcoin_Amsterdam lab:build lab:BitcoinNetwork.ie .
+
+lab:Brasil_Rom%C3%83%C2%A2n%C3%84%C2%83_Sloven%C3%85%C2%A1%C3%84%C2%8Dina ns1:C3%91%C2%80%C3%91%C2%81%C3%90%C2%BA%C3%90%C2%B8 lab:Srpski_Svenska .
+
+lab:C%2B%2B_Source_model_Free lab:start lab:License_MIT_License .
+
+lab:CCAF lab:review lab:Slovakia .
+
+lab:CPU lab:mine lab:Satoshi .
+
+lab:CheapAir lab:include lab:OKCupid .
+
+lab:Chile lab:write lab:Unidad_de_Fomento .
+
+lab:Coinbase_Pay lab:select lab:Topper .
+
+lab:Cryptographer lab:die lab:Bitcoin_Pioneer .
+
+lab:Cryptopedia lab:express lab:Gemini .
+
+lab:Development_FAQ lab:get lab:Bahasa .
+
+lab:Donald_Trump lab:reach lab:US .
+
+lab:Dunkin_Donuts lab:include lab:Best_Buy .
+
+lab:ETH lab:need lab:0ETH .
+
+lab:EUR lab:specify lab:Ledger_Wallet_TM .
+
+lab:Egypt lab:apply lab:Iraq .
+
+lab:Elon_Musk lab:add lab:Tesla .
+
+lab:Enhanced_Privacy lab:relate lab:GUIDES_How_Local_Businesses_Can_Use_Bitcoin_For_Payments_February_20%2C_2025 .
+
+lab:Friedrich_Hayek_%27s lab:accord lab:The_Denationalisation_of_Money .
+
+lab:GUIDES_How_Local_Businesses_Can_Use_Bitcoin_For_Payments_February_20%2C_2025 lab:relate lab:Bitcoin_Portfolio_Tracker_%26_Media .
+
+lab:Harvard lab:use lab:Kenneth_Rogoff .
+
+lab:Heidelberg lab:retrieve lab:Berlin_Heidelberg .
+
+lab:Home_Depot lab:include lab:Flexa .
+
+lab:ISO_4217 lab:conform lab:BT .
+
+lab:Iraq lab:apply lab:Morocco .
+
+lab:Italiano_Magyar_Nederlands_Polski_Portugu%C3%83%C2%AAs ns1:C3%91%C2%80%C3%91%C2%81%C3%90%C2%BA%C3%90%C2%B8 lab:Brasil_Rom%C3%83%C2%A2n%C3%84%C2%83_Sloven%C3%85%C2%A1%C3%84%C2%8Dina .
+
+lab:James_Heckman lab:describe lab:Paul_Krugman .
+
+lab:Joseph_Stiglitz lab:describe lab:James_Heckman .
+
+lab:Kenneth_Rogoff lab:claim lab:Krugman .
+
+lab:Krugman lab:claim lab:Bitcoin .
+
+lab:Ledger_Wallet lab:work lab:Meet_Ledger_Nano .
+
+lab:Lugano lab:accept lab:Switzerland .
+
+lab:Medium_Zooming lab:read lab:Project_Teams_%26_Founders_Read .
+
+lab:Meet_Ledger_Nano lab:work lab:Bitcoin .
+
+lab:Michael_Saylor lab:add lab:Ray_Dalio .
+
+lab:Microsoft lab:include lab:Xbox .
+
+lab:MoonPay lab:select lab:Coinbase_Pay .
+
+lab:Morocco lab:apply lab:Nepal .
+
+<http://lab_web4.org/entity/Nakamoto_Inc.> lab:publish lab:NAKA .
+
+lab:Nepal lab:apply lab:Qatar .
+
+lab:Network_Status lab:release lab:Bahasa .
+
+lab:New_Hampshire lab:institute lab:the_Czech_National_Bank .
+
+lab:Newegg_-_The lab:include lab:CheapAir .
+
+lab:OKCupid lab:include lab:Microsoft .
+
+lab:Overstock.com lab:include lab:Newegg_-_The .
+
+lab:PGP lab:relate lab:Enhanced_Privacy .
+
+lab:PIN lab:initialize lab:SRP .
+
+lab:ProShares lab:trade lab:SEC .
+
+lab:Project_Teams_%26_Founders_Read lab:read lab:Beginner .
+
+lab:Qatar lab:apply lab:Tunisia .
+
+lab:Ray_Dalio lab:add lab:Bitcoin .
+
+lab:Richard_Nixon lab:lead <http://lab_web4.org/entity/U.S.> .
+
+lab:Russia lab:follow lab:China .
+
+lab:SEC lab:trade lab:CME .
+
+lab:SRP lab:share lab:PIN .
+
+lab:Schnorr lab:activate lab:Lightning_Network .
+
+lab:SegWit lab:include lab:Bitcoin,
+        lab:SegWit ;
+    lab:resolve lab:Lightning_Network ;
+    lab:support lab:Bitcoin_Cash .
+
+lab:Smart_Contract_Risks_Read_7 lab:read lab:Medium_Zooming .
+
+lab:Srpski_Svenska ns1:C3%91%C2%80%C3%91%C2%81%C3%90%C2%BA%C3%90%C2%B8 ns1:C3%90%C2%B1%C3%91%C2%8A%C3%90%C2%BB%C3%90%C2%B3%C3%90 .
+
+lab:Tether lab:publish lab:Bitfinex .
+
+lab:Texas lab:create lab:Abbott_Signs_Bill ;
+    lab:institute lab:New_Hampshire .
+
+lab:Twitter_Linkedin lab:build lab:Virtu_Financial_For_Pending_Spot .
+
+<http://lab_web4.org/entity/U.S.> lab:control lab:Bitcoin ;
+    lab:institute lab:Texas ;
+    lab:lead lab:Richard_Nixon ;
+    lab:make lab:Bitcoin .
+
+lab:Virtu_Financial_For_Pending_Spot lab:build lab:Bitcoin_Amsterdam .
+
+lab:White_paper_Resources_Resources_Exchanges_Community_Documentation_Vocabulary_Events_Bitcoin_Core_Innovation_Participate_Support_Bitcoin_Buy_Bitcoin lab:get lab:Development_FAQ .
+
+lab:Xbox lab:include lab:Dunkin_Donuts .
+
+lab:Zug lab:accept lab:Lugano .
+
+lab:ethereum.org_Skip lab:open lab:PoW .
+
+lab:the_Bank_of_England lab:include lab:the_People%E2%80%99s_Bank_of_China .
+
+lab:the_European_Central_Bank lab:accord lab:Friedrich_Hayek_%27s .
+
+lab:the_International_Organisation_for_Standardisation_%28ISO lab:satisfy lab:BTC .
+
+lab:the_U.S._National_Security_Agency lab:consider lab:NSA .
+
+lab:treasury_reserve lab:start lab:MassMutual .
+
+lab:BTC lab:conform lab:ISO_4217 ;
+    lab:satisfy lab:Bhutan ;
+    lab:select lab:MoonPay ;
+    lab:store lab:Bitcoin ;
+    lab:trade lab:XBT ;
+    lab:work lab:Ledger_Wallet .
+
+lab:China lab:apply lab:Egypt .
+
+lab:El_Salvador lab:adopt lab:El_Salvador%E2%80%99s ;
+    lab:become lab:US ;
+    lab:describe lab:US ;
+    lab:make lab:US .
+
+lab:Gemini lab:use lab:Wikipedia .
+
+lab:Satoshi lab:call lab:Satoshi_Nakamoto ;
+    lab:name lab:Nakamoto ;
+    lab:task lab:Martti_Malmi .
+
+lab:Tesla lab:add lab:Michael_Saylor .
+
+lab:Wikipedia lab:use lab:Cryptopedia .
+
+lab:XBT lab:begin lab:ISO ;
+    lab:satisfy lab:the_International_Organisation_for_Standardisation_%28ISO .
+
+lab:Bahasa ns1:C3%91%C2%80%C3%91%C2%81%C3%90%C2%BA%C3%90%C2%B8 lab:Indonesia ;
+    lab:get lab:Indonesia ;
+    lab:release lab:Indonesia .
+
+lab:Ethereum lab:allow lab:Ethereum ;
+    lab:create lab:PoW ;
+    lab:mine lab:N ;
+    lab:open lab:PoW .
+
+lab:Nakamoto lab:estimate lab:Gavin_Andresen ;
+    lab:utilize lab:Ethereum .
+
+lab:PoW ns1:E2%80%99 lab:the_Byzantine_Generals_Problem ;
+    lab:open lab:Ethereum,
+        lab:ethereum.org_Skip ;
+    lab:use lab:Bitcoin .
+
+lab:Satoshi_Nakamoto lab:challenge lab:Bitcoin ;
+    lab:explain lab:Bitcoin%C3%A2%C2%80%C2%99s .
+
+lab:US lab:accept lab:Zug ;
+    lab:comply lab:Bitcoin_Exchanges_Must_Comply_With_Money_Laundering_Laws ;
+    lab:describe lab:El_Salvador ;
+    lab:follow lab:Russia ;
+    lab:publish <http://lab_web4.org/entity/BTC_Inc.> ;
+    lab:reach lab:Donald_Trump .
+
+lab:Bitcoin lab:accord lab:the_European_Central_Bank ;
+    lab:bitcoin lab:Oxford_Advanced_Learner%27s ;
+    lab:coin lab:Satoshi_Nakamoto ;
+    lab:control lab:Bitcoin ;
+    lab:increase lab:Satoshi_Nakamoto ;
+    lab:install lab:Ledger_Wallet_TM ;
+    lab:learn lab:Bitcoin ;
+    lab:make lab:Satoshi_Nakamoto ;
+    lab:mine lab:CPU ;
+    lab:name lab:Satoshi ;
+    lab:purchase lab:Bitcoin ;
+    lab:represent lab:Visa ;
+    lab:test lab:Ethereum ;
+    lab:use lab:Harvard .
+

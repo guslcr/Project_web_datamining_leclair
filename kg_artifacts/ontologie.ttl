@@ -1,0 +1,11 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://lab_web4.org/entity/CustomEntity> rdfs:subClassOf <http://lab_web4.org/entity/Entity> .
+
+<http://lab_web4.org/predicate/wonAward> a owl:ObjectProperty ;
+    rdfs:domain <http://lab_web4.org/entity/Person> ;
+    rdfs:range <http://lab_web4.org/entity/Award> .
+
+<http://lab_web4.org/entity/Entity> a owl:Class .
+
