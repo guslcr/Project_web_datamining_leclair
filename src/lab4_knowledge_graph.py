@@ -16,6 +16,7 @@ Usage:
 
 import argparse
 import json
+import os
 import time
 from urllib.parse import quote
 
@@ -361,6 +362,87 @@ def expand_2hop(wikidata_ids: list[str], property_id: str, limit: int = 5000) ->
     return all_triples
 
 
+def fetch_labels(entity_uris: list[str], batch_size: int = 200) -> list[tuple]:
+    """Fetch rdfs:label (English) from Wikidata for a list of entity/property URIs."""
+    print(f"\n── Fetching labels from Wikidata ({len(entity_uris)} URIs) ──")
+    sparql = SPARQLWrapper(WIKIDATA_SPARQL)
+    sparql.addCustomHttpHeader("User-Agent", HEADERS["User-Agent"])
+    sparql.setTimeout(90)
+    label_triples = []
+
+    # Separate Wikidata entity URIs and extract property IDs
+    wd_uris = [u for u in entity_uris if "wikidata.org/entity/" in u]
+    prop_ids = set()
+    for u in entity_uris:
+        if "wikidata.org/prop/direct/P" in u:
+            pid = u.rsplit("/", 1)[-1]
+            prop_ids.add(pid)
+
+    total_batches = (len(wd_uris) + batch_size - 1) // batch_size
+    print(f"  → {len(wd_uris)} entities in {total_batches} batches of {batch_size}")
+
+    # Fetch labels for entities in batches
+    for i in range(0, len(wd_uris), batch_size):
+        batch_num = i // batch_size + 1
+        batch = wd_uris[i:i + batch_size]
+        values = " ".join(f"<{u}>" for u in batch)
+        query = f"""
+        SELECT ?entity ?label WHERE {{
+            VALUES ?entity {{ {values} }}
+            ?entity rdfs:label ?label .
+            FILTER(LANG(?label) = "en")
+        }}
+        """
+        sparql.setQuery(query)
+        sparql.setReturnFormat(JSON)
+        try:
+            results = sparql.query().convert()
+            for r in results["results"]["bindings"]:
+                label_triples.append((
+                    r["entity"]["value"],
+                    "http://www.w3.org/2000/01/rdf-schema#label",
+                    r["label"]["value"],
+                ))
+            print(f"  batch {batch_num}/{total_batches} — {len(label_triples)} labels so far")
+        except Exception as e:
+            print(f"  ✗ batch {batch_num}/{total_batches} error: {e}")
+        time.sleep(0.5)
+    print(f"  ✓ {len(label_triples)} entity labels fetched")
+
+    # Fetch labels for properties (P-codes) — usually very few
+    prop_labels = []
+    if prop_ids:
+        prop_uris = [f"http://www.wikidata.org/entity/{pid}" for pid in prop_ids]
+        values = " ".join(f"<{u}>" for u in prop_uris)
+        query = f"""
+        SELECT ?prop ?label WHERE {{
+            VALUES ?prop {{ {values} }}
+            ?prop rdfs:label ?label .
+            FILTER(LANG(?label) = "en")
+        }}
+        """
+        sparql.setQuery(query)
+        sparql.setReturnFormat(JSON)
+        try:
+            results = sparql.query().convert()
+            for r in results["results"]["bindings"]:
+                pid = r["prop"]["value"].rsplit("/", 1)[-1]
+                label_triples.append((
+                    f"http://www.wikidata.org/prop/direct/{pid}",
+                    "http://www.w3.org/2000/01/rdf-schema#label",
+                    r["label"]["value"],
+                ))
+                prop_labels.append(r["label"]["value"])
+        except Exception as e:
+            print(f"  ✗ Property label error: {e}")
+    print(f"  ✓ {len(prop_labels)} property labels fetched")
+    print(f"  ✓ {len(label_triples)} total labels")
+    return label_triples
+
+
+MAX_LABEL_ENTITIES = 2000  # Cap to avoid very long Wikidata requests
+
+
 def merge_graph(private_graph: Graph, expansion_triples: list[tuple]) -> tuple[Graph, dict]:
     print("\n── Merging and deduplicating graph ──")
     g = Graph()
@@ -372,6 +454,28 @@ def merge_graph(private_graph: Graph, expansion_triples: list[tuple]) -> tuple[G
             g.add((URIRef(s), URIRef(p), obj))
         except Exception:
             pass
+
+    # Collect Wikidata URIs for label fetching
+    # Prioritise: all predicates + subjects (capped) — these are most useful for RAG
+    pred_uris = set()
+    subj_uris = set()
+    for s, p, o in g:
+        p_str = str(p)
+        if "wikidata.org" in p_str:
+            pred_uris.add(p_str)
+        s_str = str(s)
+        if "wikidata.org/entity/" in s_str:
+            subj_uris.add(s_str)
+
+    # Take all predicates + up to MAX_LABEL_ENTITIES subjects
+    to_fetch = list(pred_uris) + list(subj_uris)[:MAX_LABEL_ENTITIES]
+    print(f"  → {len(pred_uris)} predicates + {min(len(subj_uris), MAX_LABEL_ENTITIES)} entities selected for labels")
+
+    # Fetch and add labels
+    label_triples = fetch_labels(to_fetch)
+    for s, p, o in label_triples:
+        g.add((URIRef(s), URIRef(p), Literal(o, lang="en")))
+
     entities  = set(str(s) for s, _, _ in g) | set(str(o) for _, _, o in g if isinstance(o, URIRef))
     relations = set(str(p) for _, p, _ in g)
     stats = {"triples": len(g), "entities": len(entities), "relations": len(relations)}
@@ -390,9 +494,13 @@ def save_deliverables(
     stats: dict,
 ):
     print("\n── Saving deliverables ──")
+    os.makedirs("kg_artifacts", exist_ok=True)
     expanded_graph.serialize("kb_expanse.nt",     format="nt");      print("  ✓ kb_expanse.nt")
+    expanded_graph.serialize("kg_artifacts/kb_expanse.nt", format="nt"); print("  ✓ kg_artifacts/kb_expanse.nt")
     ontology_graph.serialize("ontologie.ttl",     format="turtle");  print("  ✓ ontologie.ttl")
+    ontology_graph.serialize("kg_artifacts/ontologie.ttl", format="turtle"); print("  ✓ kg_artifacts/ontologie.ttl")
     alignment_graph.serialize("alignement.ttl",   format="turtle");  print("  ✓ alignement.ttl")
+    alignment_graph.serialize("kg_artifacts/alignement.ttl", format="turtle"); print("  ✓ kg_artifacts/alignement.ttl")
     df_mapping.to_csv("mapping_entites.csv",      index=False);      print("  ✓ mapping_entites.csv")
     df_predicates.to_csv("alignement_predicats.csv", index=False);   print("  ✓ alignement_predicats.csv")
     with open("statistiques_kb.json", "w") as f:
