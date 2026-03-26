@@ -24,7 +24,7 @@ import requests
 from rdflib import Graph
 
 # ── Configuration ──────────────────────────────────────────────────────────────
-NT_FILE         = "kb_expanse.nt"
+NT_FILE         = "kg_artifacts/kb_expanse.nt"
 OLLAMA_URL      = "http://localhost:11434/api/generate"
 DEFAULT_MODEL   = "gemma:2b"   # alternatives: qwen2.5:0.5b, deepseek-r1:1.5b
 MAX_PREDICATES  = 80
