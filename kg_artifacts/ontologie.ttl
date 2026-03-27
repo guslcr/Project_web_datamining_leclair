@@ -1,11 +1,68 @@
+@prefix lab: <http://lab_web4.org/entity/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pred: <http://lab_web4.org/predicate/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-<http://lab_web4.org/entity/CustomEntity> rdfs:subClassOf <http://lab_web4.org/entity/Entity> .
+lab:Cryptocurrency a owl:Class ;
+    rdfs:subClassOf lab:Technology .
 
-<http://lab_web4.org/predicate/wonAward> a owl:ObjectProperty ;
-    rdfs:domain <http://lab_web4.org/entity/Person> ;
-    rdfs:range <http://lab_web4.org/entity/Award> .
+lab:CustomEntity a owl:Class ;
+    rdfs:subClassOf lab:Entity .
 
-<http://lab_web4.org/entity/Entity> a owl:Class .
+pred:avoir a owl:ObjectProperty ;
+    rdfs:domain lab:Entity ;
+    rdfs:range lab:Entity .
+
+pred:consommer a owl:ObjectProperty ;
+    rdfs:domain lab:Entity ;
+    rdfs:range lab:Entity .
+
+pred:fieldOfWork a owl:ObjectProperty ;
+    rdfs:domain lab:Person ;
+    rdfs:range lab:Entity .
+
+pred:foundedBy a owl:ObjectProperty ;
+    rdfs:domain lab:Organization ;
+    rdfs:range lab:Person .
+
+pred:headquarterIn a owl:ObjectProperty ;
+    rdfs:domain lab:Organization ;
+    rdfs:range lab:Location .
+
+pred:industryOf a owl:ObjectProperty ;
+    rdfs:domain lab:Organization ;
+    rdfs:range lab:Entity .
+
+pred:locatedIn a owl:ObjectProperty ;
+    rdfs:domain lab:Entity ;
+    rdfs:range lab:Location .
+
+pred:ownedBy a owl:ObjectProperty ;
+    rdfs:domain lab:Entity ;
+    rdfs:range lab:Organization .
+
+pred:permettre a owl:ObjectProperty ;
+    rdfs:domain lab:Entity ;
+    rdfs:range lab:Entity .
+
+pred:wonAward a owl:ObjectProperty ;
+    rdfs:domain lab:Person ;
+    rdfs:range lab:Award .
+
+lab:Award a owl:Class ;
+    rdfs:subClassOf lab:Entity .
+
+lab:Technology a owl:Class ;
+    rdfs:subClassOf lab:Entity .
+
+lab:Location a owl:Class ;
+    rdfs:subClassOf lab:Entity .
+
+lab:Person a owl:Class ;
+    rdfs:subClassOf lab:Entity .
+
+lab:Organization a owl:Class ;
+    rdfs:subClassOf lab:Entity .
+
+lab:Entity a owl:Class .
 

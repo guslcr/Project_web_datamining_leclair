@@ -1,0 +1,8 @@
+Private Predicate,Wikidata Property,Wikidata Label,Relation,Validate
+:avoir,P527,has part(s),owl:equivalentProperty,manual check needed
+:consommer,P8891,heating energy consumption index,owl:equivalentProperty,manual check needed
+:permettre,P366,has use,owl:equivalentProperty,manual check needed
+:encourager,N/A,Not found,N/A,—
+:supply,P1092,total produced,owl:equivalentProperty,manual check needed
+:blockchain,N/A,Not found,N/A,—
+:node,P31,instance of,owl:equivalentProperty,manual check needed

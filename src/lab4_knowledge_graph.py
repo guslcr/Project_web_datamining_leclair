@@ -495,17 +495,39 @@ def save_deliverables(
 ):
     print("\n── Saving deliverables ──")
     os.makedirs("kg_artifacts", exist_ok=True)
-    expanded_graph.serialize("kb_expanse.nt",     format="nt");      print("  ✓ kb_expanse.nt")
-    expanded_graph.serialize("kg_artifacts/kb_expanse.nt", format="nt"); print("  ✓ kg_artifacts/kb_expanse.nt")
-    ontology_graph.serialize("ontologie.ttl",     format="turtle");  print("  ✓ ontologie.ttl")
-    ontology_graph.serialize("kg_artifacts/ontologie.ttl", format="turtle"); print("  ✓ kg_artifacts/ontologie.ttl")
-    alignment_graph.serialize("alignement.ttl",   format="turtle");  print("  ✓ alignement.ttl")
-    alignment_graph.serialize("kg_artifacts/alignement.ttl", format="turtle"); print("  ✓ kg_artifacts/alignement.ttl")
-    df_mapping.to_csv("mapping_entites.csv",      index=False);      print("  ✓ mapping_entites.csv")
-    df_predicates.to_csv("alignement_predicats.csv", index=False);   print("  ✓ alignement_predicats.csv")
+    os.makedirs("outputs", exist_ok=True)
+
+    # Primary location: kg_artifacts/ (project deliverables)
+    expanded_graph.serialize("kg_artifacts/kb_expanse.nt", format="nt")
+    print("  ✓ kg_artifacts/kb_expanse.nt")
+    ontology_graph.serialize("kg_artifacts/ontologie.ttl", format="turtle")
+    print("  ✓ kg_artifacts/ontologie.ttl")
+    alignment_graph.serialize("kg_artifacts/alignement.ttl", format="turtle")
+    print("  ✓ kg_artifacts/alignement.ttl")
+
+    # Root copies for backward compatibility (lab5/lab6 may read from root)
+    expanded_graph.serialize("kb_expanse.nt", format="nt")
+    print("  ✓ kb_expanse.nt")
+
+    # Tabular outputs
+    df_mapping.to_csv("outputs/mapping_entites.csv", index=False)
+    print("  ✓ outputs/mapping_entites.csv")
+    df_predicates.to_csv("outputs/alignement_predicats.csv", index=False)
+    print("  ✓ outputs/alignement_predicats.csv")
+
+    # Statistics
+    with open("kg_artifacts/statistiques_kb.json", "w") as f:
+        json.dump(stats, f, indent=2, ensure_ascii=False)
     with open("statistiques_kb.json", "w") as f:
         json.dump(stats, f, indent=2, ensure_ascii=False)
-    print("  ✓ statistiques_kb.json")
+    print("  ✓ kg_artifacts/statistiques_kb.json")
+
+    # Initial graph copy
+    if os.path.exists("graphe.ttl"):
+        import shutil
+        shutil.copy2("graphe.ttl", "kg_artifacts/graphe.ttl")
+        print("  ✓ kg_artifacts/graphe.ttl")
+
     print(f"\n{'='*50}\n  FINAL STATISTICS\n{'='*50}")
     for k, v in stats.items():
         print(f"  {k:<20} : {v:,}")
@@ -522,13 +544,19 @@ ENTITIES_TO_LINK = [
 ]
 
 PREDICATES_TO_ALIGN = {
-    "avoir":      "has part",
-    "consommer":  "energy consumption",
-    "permettre":  "use",
-    "encourager": "promotes",
-    "supply":     "total produced",
-    "blockchain": "blockchain",
-    "node":       "instance of",
+    "avoir":        "has part",
+    "consommer":    "energy consumption",
+    "permettre":    "use",
+    "encourager":   "promotes",
+    "supply":       "total produced",
+    "node":         "instance of",
+    "wonAward":     "award received",
+    "fieldOfWork":  "field of work",
+    "foundedBy":    "founded by",
+    "locatedIn":    "country",
+    "headquarterIn":"headquarters location",
+    "ownedBy":      "owned by",
+    "industryOf":   "industry",
 }
 
 EXPANSION_PROPERTIES = ["P31", "P17", "P571", "P856", "P159", "P452", "P166", "P1346", "P355"]
@@ -602,13 +630,44 @@ def main(expand_only: bool = False):
     # ── Merge ──
     g_expanded, stats = merge_graph(g_private, expansion)
 
-    # ── Minimal ontology ──
+    # ── Ontology (classes + properties with domain/range) ──
     g_ontology = Graph()
-    g_ontology.add((NS.Entity,        RDF.type,         OWL.Class))
-    g_ontology.add((NS.CustomEntity,  RDFS.subClassOf,  NS.Entity))
-    g_ontology.add((PRED.wonAward,    RDF.type,         OWL.ObjectProperty))
-    g_ontology.add((PRED.wonAward,    RDFS.domain,      NS.Person))
-    g_ontology.add((PRED.wonAward,    RDFS.range,       NS.Award))
+    g_ontology.bind("owl", OWL)
+    g_ontology.bind("rdfs", RDFS)
+    g_ontology.bind("lab", NS)
+    g_ontology.bind("pred", PRED)
+
+    # Classes
+    for cls_name in ["Entity", "Person", "Organization", "Location", "Award",
+                      "Cryptocurrency", "Technology", "CustomEntity"]:
+        cls_uri = NS[cls_name]
+        g_ontology.add((cls_uri, RDF.type, OWL.Class))
+    g_ontology.add((NS.CustomEntity,    RDFS.subClassOf,  NS.Entity))
+    g_ontology.add((NS.Person,          RDFS.subClassOf,  NS.Entity))
+    g_ontology.add((NS.Organization,    RDFS.subClassOf,  NS.Entity))
+    g_ontology.add((NS.Location,        RDFS.subClassOf,  NS.Entity))
+    g_ontology.add((NS.Award,           RDFS.subClassOf,  NS.Entity))
+    g_ontology.add((NS.Cryptocurrency,  RDFS.subClassOf,  NS.Technology))
+    g_ontology.add((NS.Technology,      RDFS.subClassOf,  NS.Entity))
+
+    # Object properties with domain & range
+    properties = [
+        ("wonAward",       NS.Person,         NS.Award),
+        ("fieldOfWork",    NS.Person,         NS.Entity),
+        ("foundedBy",      NS.Organization,   NS.Person),
+        ("locatedIn",      NS.Entity,         NS.Location),
+        ("headquarterIn",  NS.Organization,   NS.Location),
+        ("ownedBy",        NS.Entity,         NS.Organization),
+        ("industryOf",     NS.Organization,   NS.Entity),
+        ("avoir",          NS.Entity,         NS.Entity),
+        ("consommer",      NS.Entity,         NS.Entity),
+        ("permettre",      NS.Entity,         NS.Entity),
+    ]
+    for pred_name, domain, range_ in properties:
+        pred_uri = PRED[pred_name]
+        g_ontology.add((pred_uri, RDF.type,    OWL.ObjectProperty))
+        g_ontology.add((pred_uri, RDFS.domain, domain))
+        g_ontology.add((pred_uri, RDFS.range,  range_))
 
     # ── Save ──
     save_deliverables(g_expanded, g_ontology, g_alignment, df_mapping, df_predicates, stats)

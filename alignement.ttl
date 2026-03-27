@@ -1,0 +1,12 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<http://lab_web4.org/predicate/avoir> owl:equivalentProperty <http://www.wikidata.org/entity/P527> .
+
+<http://lab_web4.org/predicate/consommer> owl:equivalentProperty <http://www.wikidata.org/entity/P8891> .
+
+<http://lab_web4.org/predicate/node> owl:equivalentProperty <http://www.wikidata.org/entity/P31> .
+
+<http://lab_web4.org/predicate/permettre> owl:equivalentProperty <http://www.wikidata.org/entity/P366> .
+
+<http://lab_web4.org/predicate/supply> owl:equivalentProperty <http://www.wikidata.org/entity/P1092> .
+

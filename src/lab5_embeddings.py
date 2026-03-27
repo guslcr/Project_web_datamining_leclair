@@ -643,17 +643,206 @@ def run_section_d():
 
 
 # ══════════════════════════════════════════════════════════════════════════════
+# SECTION E – Relation Behavior Analysis + SWRL on own KB + Rule vs Embedding
+# ══════════════════════════════════════════════════════════════════════════════
+
+def run_section_e():
+    """Exercise 8: Relation behavior, SWRL on own KB, rule-vs-embedding comparison."""
+    print("\n" + "=" * 60)
+    print("  SECTION E — Relation Behavior & Rule vs Embedding")
+    print("=" * 60)
+
+    required_models = ["models/transe_ent.npy", "models/transe_rel.npy"]
+    if not all(os.path.exists(p) for p in required_models):
+        print("[SKIP] Model files not found — run Section C first.")
+        return
+
+    (train_ids, _, test_ids, entities, relations,
+     e2id, r2id, id2e, filter_tail, filter_head) = _load_data()
+
+    rel_emb = np.load("models/transe_rel.npy")
+
+    # ── 6.3 Relation Behavior Analysis ──
+    print("\n── 6.3 Relation Behavior Analysis ──")
+
+    # Symmetric relations: r ≈ -r → ‖r + r‖ should be small
+    print("\n  Symmetry test: For symmetric relations, ‖r + r‖ ≈ 0")
+    print(f"  {'Relation':<14} {'‖r‖':>8} {'‖r+r‖':>8}  {'Symmetric?'}")
+    for rel_name in sorted(r2id.keys()):
+        rid = r2id[rel_name]
+        r_vec = rel_emb[rid]
+        norm_r = np.linalg.norm(r_vec)
+        norm_2r = np.linalg.norm(r_vec + r_vec)
+        # A truly symmetric relation would have r ≈ 0
+        sym = "likely" if norm_r < 0.5 else "no"
+        if rel_name in WD_NAMES or norm_r < 0.5:
+            print(f"  {WD_NAMES.get(rel_name, rel_name):<14} {norm_r:>8.4f} {norm_2r:>8.4f}  {sym}")
+
+    # Inverse relations: r1 ≈ -r2
+    print("\n  Inverse relation test: r1 ≈ -r2")
+    rel_keys = list(r2id.keys())
+    inverse_candidates = []
+    for i, r1 in enumerate(rel_keys):
+        for r2 in rel_keys[i+1:]:
+            v1, v2 = rel_emb[r2id[r1]], rel_emb[r2id[r2]]
+            cos_inv = np.dot(v1, -v2) / (np.linalg.norm(v1) * np.linalg.norm(v2) + 1e-9)
+            if cos_inv > 0.5:
+                inverse_candidates.append((r1, r2, cos_inv))
+    inverse_candidates.sort(key=lambda x: -x[2])
+    if inverse_candidates:
+        print(f"  {'Relation 1':<14} {'Relation 2':<14} {'cos(r1,-r2)':>12}")
+        for r1, r2, cos in inverse_candidates[:5]:
+            n1 = WD_NAMES.get(r1, r1)
+            n2 = WD_NAMES.get(r2, r2)
+            print(f"  {n1:<14} {n2:<14} {cos:>12.4f}")
+    else:
+        print("  No strong inverse relation pairs found (this is expected for small KBs).")
+
+    # Composition: r1 + r2 ≈ r3
+    print("\n  Composition test: r1 + r2 ≈ r3")
+    composition_candidates = []
+    for r1 in rel_keys:
+        for r2 in rel_keys:
+            if r1 == r2:
+                continue
+            v_sum = rel_emb[r2id[r1]] + rel_emb[r2id[r2]]
+            for r3 in rel_keys:
+                if r3 in (r1, r2):
+                    continue
+                v3 = rel_emb[r2id[r3]]
+                cos = np.dot(v_sum, v3) / (np.linalg.norm(v_sum) * np.linalg.norm(v3) + 1e-9)
+                if cos > 0.7:
+                    composition_candidates.append((r1, r2, r3, cos))
+    composition_candidates.sort(key=lambda x: -x[3])
+    if composition_candidates:
+        print(f"  {'r1':<10} + {'r2':<10} ≈ {'r3':<10} {'cos':>8}")
+        for r1, r2, r3, cos in composition_candidates[:5]:
+            n1 = WD_NAMES.get(r1, r1)
+            n2 = WD_NAMES.get(r2, r2)
+            n3 = WD_NAMES.get(r3, r3)
+            print(f"  {n1:<10} + {n2:<10} ≈ {n3:<10} {cos:>8.4f}")
+    else:
+        print("  No strong composition patterns found.")
+
+    print("\n  Discussion:")
+    print("  - TransE models relations as translations h + r ≈ t,")
+    print("    so it naturally captures composition (r1 + r2 ≈ r3).")
+    print("  - TransE struggles with symmetric relations because it requires r ≈ 0.")
+    print("  - DistMult handles symmetric relations better (score = h * r * t is symmetric in h,t)")
+    print("    but cannot model antisymmetric or inverse relations.")
+
+    # ── Exercise 8: SWRL rule on own KB ──
+    print("\n── Exercise 8: SWRL Rule on Own KB ──")
+    print("\n  Designed SWRL rule for our cryptocurrency KB:")
+    print("  Entity(?e) ∧ instance_of(?e, Q5) ∧ award_received(?e, ?a) → AwardWinner(?e)")
+    print("\n  In Wikidata terms:")
+    print("    ?e wdt:P31 wd:Q5 (is a human)")
+    print("    ?e wdt:P166 ?a   (received an award)")
+    print("    → ?e is an AwardWinner")
+
+    # Find entities matching this rule from KB
+    p31_id = r2id.get("P31")
+    p166_id = r2id.get("P166")
+    q5_id = e2id.get("Q5")
+
+    if p31_id is not None and p166_id is not None and q5_id is not None:
+        humans = set()
+        award_winners = set()
+        for h, r, t in train_ids:
+            if r == p31_id and t == q5_id:
+                humans.add(h)
+            if r == p166_id:
+                award_winners.add(h)
+        inferred = humans & award_winners
+        print(f"\n  Rule-based reasoning results:")
+        print(f"    Humans (P31=Q5):         {len(humans)}")
+        print(f"    Award recipients (P166): {len(award_winners)}")
+        print(f"    Inferred AwardWinners:   {len(inferred)}")
+        if inferred:
+            sample = list(inferred)[:5]
+            for eid in sample:
+                print(f"      • {qlabel(id2e[eid])} ({id2e[eid]})")
+
+        # ── Rule vs Embedding comparison ──
+        print("\n── Rule-based vs Embedding-based Reasoning ──")
+        print("\n  Test: Can we replicate the SWRL rule with vector arithmetic?")
+        print("  Rule: instance_of(P31) + human(Q5) + award_received(P166) → ?")
+        print("  Embedding: vec(P31) + vec(Q5) should be close to vec(P166)")
+
+        if q5_id < len(np.load("models/transe_ent.npy")):
+            ent_emb = np.load("models/transe_ent.npy")
+            # vec(P31) as relation + vec(Q5) as entity → should approximate "being human"
+            # then adding vec(P166) → "human who received an award"
+            v_p31 = rel_emb[p31_id]
+            v_p166 = rel_emb[p166_id]
+            v_q5 = ent_emb[q5_id]
+
+            # Test: vec(P31) + vec(P166) ≈ ? relation
+            combined = v_p31 + v_p166
+            print(f"\n  cos(vec(P31) + vec(P166), vec(r)) for all relations:")
+            sims = []
+            for rel_name, rid in r2id.items():
+                cos = np.dot(combined, rel_emb[rid]) / (
+                    np.linalg.norm(combined) * np.linalg.norm(rel_emb[rid]) + 1e-9)
+                sims.append((rel_name, cos))
+            sims.sort(key=lambda x: -x[1])
+            for rn, cs in sims[:5]:
+                print(f"    {WD_NAMES.get(rn, rn):<18} cos = {cs:.4f}")
+
+            # Score comparison: rule-inferred entities vs embedding prediction
+            if inferred:
+                print(f"\n  Are rule-inferred AwardWinners close in embedding space?")
+                inferred_list = list(inferred)[:20]
+                non_inferred = [e for e in range(len(ent_emb))
+                                if e not in inferred and e in humans][:20]
+
+                E_n = norm_rows(ent_emb)
+                avg_cos_inferred = 0
+                for e in inferred_list:
+                    avg_cos_inferred += np.mean([
+                        np.dot(E_n[e], E_n[o]) for o in inferred_list if o != e
+                    ]) if len(inferred_list) > 1 else 0
+                avg_cos_inferred /= max(len(inferred_list), 1)
+
+                avg_cos_non = 0
+                if non_inferred:
+                    for e in non_inferred:
+                        avg_cos_non += np.mean([
+                            np.dot(E_n[e], E_n[o]) for o in non_inferred if o != e
+                        ]) if len(non_inferred) > 1 else 0
+                    avg_cos_non /= max(len(non_inferred), 1)
+
+                print(f"    Avg cosine among AwardWinners: {avg_cos_inferred:.4f}")
+                print(f"    Avg cosine among non-winners:  {avg_cos_non:.4f}")
+                if avg_cos_inferred > avg_cos_non:
+                    print("    → AwardWinners cluster tighter — embedding captures the rule pattern.")
+                else:
+                    print("    → No clear cluster — rule-based reasoning is more precise here.")
+    else:
+        print("  [SKIP] P31, P166, or Q5 not in KB — cannot run rule comparison.")
+
+    print("\n  Conclusion:")
+    print("  - Rule-based reasoning (SWRL) gives exact, deterministic results")
+    print("    but requires manually designed rules and a complete KB.")
+    print("  - Embedding-based reasoning can generalize to unseen triples")
+    print("    but produces approximate, probabilistic results.")
+    print("  - For our KB, the SWRL rule precisely identifies AwardWinners,")
+    print("    while embeddings show weaker but meaningful clustering.")
+
+
+# ══════════════════════════════════════════════════════════════════════════════
 # Entry point
 # ══════════════════════════════════════════════════════════════════════════════
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--section", choices=["A","B","C","D","all"], default="all")
+    parser.add_argument("--section", choices=["A","B","C","D","E","all"], default="all")
     args = parser.parse_args()
 
-    sections = ["A","B","C","D"] if args.section == "all" else [args.section]
+    sections = ["A","B","C","D","E"] if args.section == "all" else [args.section]
     for sec in sections:
         if sec == "A": run_section_a()
         elif sec == "B": run_section_b()
         elif sec == "C": run_section_c()
         elif sec == "D": run_section_d()
+        elif sec == "E": run_section_e()

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://example.org/family#"
+     xml:base="http://example.org/family"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+    <owl:Ontology rdf:about="http://example.org/family"/>
+
+    <!-- Classes -->
+    <owl:Class rdf:about="http://example.org/family#Person"/>
+    <owl:Class rdf:about="http://example.org/family#OldPerson">
+        <rdfs:subClassOf rdf:resource="http://example.org/family#Person"/>
+    </owl:Class>
+
+    <!-- Data property: age -->
+    <owl:DatatypeProperty rdf:about="http://example.org/family#age">
+        <rdfs:domain rdf:resource="http://example.org/family#Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+
+    <!-- Object property: hasChild -->
+    <owl:ObjectProperty rdf:about="http://example.org/family#hasChild">
+        <rdfs:domain rdf:resource="http://example.org/family#Person"/>
+        <rdfs:range rdf:resource="http://example.org/family#Person"/>
+    </owl:ObjectProperty>
+
+    <!-- Individuals -->
+    <owl:NamedIndividual rdf:about="http://example.org/family#Alice">
+        <rdf:type rdf:resource="http://example.org/family#Person"/>
+        <age rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">72</age>
+        <hasChild rdf:resource="http://example.org/family#Bob"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://example.org/family#Bob">
+        <rdf:type rdf:resource="http://example.org/family#Person"/>
+        <age rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">45</age>
+        <hasChild rdf:resource="http://example.org/family#Charlie"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://example.org/family#Charlie">
+        <rdf:type rdf:resource="http://example.org/family#Person"/>
+        <age rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">20</age>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://example.org/family#Diana">
+        <rdf:type rdf:resource="http://example.org/family#Person"/>
+        <age rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">68</age>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://example.org/family#Eve">
+        <rdf:type rdf:resource="http://example.org/family#Person"/>
+        <age rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">55</age>
+    </owl:NamedIndividual>
+
+</rdf:RDF>

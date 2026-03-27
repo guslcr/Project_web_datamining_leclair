@@ -40,11 +40,13 @@ TRY_REPAIR      = True
 
 # ── Evaluation questions (IRIs confirmed in kb_expanse.nt) ────────────────────
 EVAL_QUESTIONS = [
-    "Which entities are instances of human (Q5)? Give the first 10.",
-    "Which entities received an award (P166)? Give the first 10.",
-    "Which entities are located in Canada (Q16)?",
-    "Which entities have a known industry (P452)? Give the first 10.",
-    "Which entities have subsidiaries (P355)?",
+    "What is Bitcoin?",
+    "Who created Bitcoin?",
+    "In which country is the Bank of England located?",
+    "What awards has Microsoft received?",
+    "What industry does Visa operate in?",
+    "Where is the University of Cambridge located?",
+    "What companies are related to Ethereum?",
 ]
 
 # ── Prefix expansion map ───────────────────────────────────────────────────────
@@ -88,23 +90,38 @@ KNOWN_PROPERTIES = {
     "P14178": "CoinGecko ID",
 }
 
-# Well-known Wikidata entity labels
+# Well-known Wikidata entity labels (includes entities aligned in Lab 4)
 KNOWN_ENTITIES = {
+    # Classes / types
     "Q5": "human",
     "Q4": "artwork",
-    "Q16": "Canada",
-    "Q30": "United States",
-    "Q38": "Italy",
-    "Q60": "New York City",
-    "Q61": "Washington, D.C.",
-    "Q131723": "Bitcoin",
-    "Q2283": "Ethereum (not in KB - use local entity)",
     "Q7590": "financial services",
     "Q11034": "electronics",
     "Q11023": "engineering",
     "Q11425": "animation",
     "Q68": "computer science",
     "Q75": "Internet",
+    # Countries / locations
+    "Q16": "Canada",
+    "Q30": "United States",
+    "Q38": "Italy",
+    "Q60": "New York City",
+    "Q61": "Washington, D.C.",
+    "Q145": "United Kingdom",
+    "Q142": "France",
+    # Core domain entities (from Lab 4 ENTITIES_TO_LINK)
+    "Q131723": "Bitcoin",
+    "Q1735": "Ethereum",
+    "Q620315": "Satoshi Nakamoto",
+    "Q26876990": "Jack Dorsey",
+    "Q317521": "Elon Musk",
+    "Q377575": "Adam Back",
+    "Q170726": "Joseph Stiglitz",
+    "Q2283": "Microsoft",
+    "Q35794": "University of Cambridge",
+    "Q207338": "Bank of England",
+    "Q21127": "Bank of China",
+    "Q328476": "Visa Inc.",
 }
 
 CODE_BLOCK_RE = re.compile(r"```(?:sparql)?\s*(.*?)```", re.IGNORECASE | re.DOTALL)
@@ -209,6 +226,10 @@ def load_graph(nt_path: str) -> Graph:
 # 3 – Entity search (find IRIs by keyword in URI fragments + labels)
 # ══════════════════════════════════════════════════════════════════════════════
 
+# Label index: built once at graph load time for fast keyword search
+_LABEL_INDEX: dict[str, str] = {}   # uri → label  (populated by build_label_index)
+
+
 def uri_to_label(uri: str) -> str:
     """Extract a human-readable label from a URI fragment."""
     fragment = uri.rsplit("/", 1)[-1]
@@ -216,26 +237,55 @@ def uri_to_label(uri: str) -> str:
     return decoded
 
 
+def build_label_index(g: Graph):
+    """Scan all rdfs:label triples and KNOWN_ENTITIES to build a fast lookup."""
+    global _LABEL_INDEX
+    _LABEL_INDEX = {}
+
+    # 1. Add KNOWN_ENTITIES
+    for qid, label in KNOWN_ENTITIES.items():
+        uri = f"http://www.wikidata.org/entity/{qid}"
+        _LABEL_INDEX[uri] = label
+
+    # 2. Add KNOWN_PROPERTIES
+    for pid, label in KNOWN_PROPERTIES.items():
+        uri = f"http://www.wikidata.org/prop/direct/{pid}"
+        _LABEL_INDEX[uri] = label
+
+    # 3. Scan rdfs:label triples in the graph
+    RDFS_LABEL = "http://www.w3.org/2000/01/rdf-schema#label"
+    count = 0
+    for s, p, o in g:
+        if str(p) == RDFS_LABEL:
+            _LABEL_INDEX[str(s)] = str(o)
+            count += 1
+
+    print(f"[OK] Label index: {len(_LABEL_INDEX)} entries ({count} from rdfs:label)")
+
+
 def search_entity(g: Graph, keyword: str, limit: int = 5) -> list[dict]:
     """Search for entities in the graph matching a keyword (case-insensitive)."""
     keyword_lower = keyword.lower()
     matches = []
+    seen_uris = set()
 
-    # First: check if it's a known Q-code
-    for qid, label in KNOWN_ENTITIES.items():
-        if keyword_lower in label.lower() or keyword_lower == qid.lower():
-            uri = f"http://www.wikidata.org/entity/{qid}"
-            # Verify it actually exists in the graph
+    # 1. Search in label index (KNOWN_ENTITIES + rdfs:label)
+    for uri, label in _LABEL_INDEX.items():
+        if keyword_lower in label.lower():
+            # Verify it exists in the graph (as subject or object)
             if (URIRef(uri), None, None) in g or (None, None, URIRef(uri)) in g:
-                matches.append({"uri": uri, "label": label, "source": "wikidata"})
+                if uri not in seen_uris:
+                    seen_uris.add(uri)
+                    matches.append({"uri": uri, "label": label, "source": "index"})
+            if len(matches) >= limit:
+                return matches
 
-    # Second: search in local entity URIs (lab_web4.org)
-    seen = set()
+    # 2. Fallback: search in local entity URIs by URI fragment
     for s in g.subjects():
         s_str = str(s)
-        if s_str in seen:
+        if s_str in seen_uris:
             continue
-        seen.add(s_str)
+        seen_uris.add(s_str)
         label = uri_to_label(s_str)
         if keyword_lower in label.lower():
             matches.append({"uri": s_str, "label": label, "source": "local"})
@@ -397,9 +447,22 @@ def template_about_entity(g: Graph, question: str) -> str | None:
         results = search_entity(g, kw, limit=1)
         if results:
             uri = results[0]["uri"]
+            # Try entity as subject first
+            test_q = f"SELECT ?p ?o WHERE {{ <{uri}> ?p ?o }} LIMIT 1"
+            try:
+                _, rows = run_sparql(g, test_q)
+                if rows:
+                    return (
+                        f"SELECT ?property ?value WHERE {{\n"
+                        f"  <{uri}> ?property ?value .\n"
+                        f"}} LIMIT 20"
+                    )
+            except Exception:
+                pass
+            # Try entity as object (e.g., "What is Bitcoin?" → things pointing TO Bitcoin)
             return (
-                f"SELECT ?property ?value WHERE {{\n"
-                f"  <{uri}> ?property ?value .\n"
+                f"SELECT ?subject ?property WHERE {{\n"
+                f"  ?subject ?property <{uri}> .\n"
                 f"}} LIMIT 20"
             )
     return None
@@ -436,24 +499,46 @@ def template_property_search(g: Graph, question: str) -> str | None:
         "website":     "P856",
         "founded":     "P112",
         "founder":     "P112",
+        "created":     "P112",
+        "create":      "P112",
         "winner":      "P1346",
+        "instance":    "P31",
+        "type":        "P31",
     }
     for keyword, pid in property_keywords.items():
         if keyword in q_lower:
+            prop_uri = f"http://www.wikidata.org/prop/direct/{pid}"
             # Check if the question also mentions a specific entity
             other_keywords = [k for k in _extract_keywords(question) if k != keyword]
             for kw in other_keywords:
                 results = search_entity(g, kw, limit=1)
                 if results:
                     uri = results[0]["uri"]
-                    prop_uri = f"http://www.wikidata.org/prop/direct/{pid}"
-                    return (
-                        f"SELECT ?result WHERE {{\n"
-                        f"  <{uri}> <{prop_uri}> ?result .\n"
-                        f"}} LIMIT 10"
-                    )
+                    # Try entity as subject: <entity> <prop> ?result
+                    q1 = f"SELECT ?result WHERE {{ <{uri}> <{prop_uri}> ?result }} LIMIT 1"
+                    try:
+                        _, rows = run_sparql(g, q1)
+                        if rows:
+                            return (
+                                f"SELECT ?result WHERE {{\n"
+                                f"  <{uri}> <{prop_uri}> ?result .\n"
+                                f"}} LIMIT 10"
+                            )
+                    except Exception:
+                        pass
+                    # Try entity as object: ?result <prop> <entity>
+                    q2 = f"SELECT ?result WHERE {{ ?result <{prop_uri}> <{uri}> }} LIMIT 1"
+                    try:
+                        _, rows = run_sparql(g, q2)
+                        if rows:
+                            return (
+                                f"SELECT ?result WHERE {{\n"
+                                f"  ?result <{prop_uri}> <{uri}> .\n"
+                                f"}} LIMIT 10"
+                            )
+                    except Exception:
+                        pass
             # No specific entity — list all entities with this property
-            prop_uri = f"http://www.wikidata.org/prop/direct/{pid}"
             return (
                 f"SELECT ?entity ?value WHERE {{\n"
                 f"  ?entity <{prop_uri}> ?value .\n"
@@ -469,9 +554,22 @@ def template_fallback(g: Graph, question: str) -> str | None:
         results = search_entity(g, kw, limit=1)
         if results:
             uri = results[0]["uri"]
+            # Try as subject first
+            q1 = f"SELECT ?p ?o WHERE {{ <{uri}> ?p ?o }} LIMIT 1"
+            try:
+                _, rows = run_sparql(g, q1)
+                if rows:
+                    return (
+                        f"SELECT ?property ?value WHERE {{\n"
+                        f"  <{uri}> ?property ?value .\n"
+                        f"}} LIMIT 20"
+                    )
+            except Exception:
+                pass
+            # Try as object
             return (
-                f"SELECT ?property ?value WHERE {{\n"
-                f"  <{uri}> ?property ?value .\n"
+                f"SELECT ?subject ?property WHERE {{\n"
+                f"  ?subject ?property <{uri}> .\n"
                 f"}} LIMIT 20"
             )
     return None
@@ -662,16 +760,71 @@ def run_evaluation(g: Graph, schema: str, model: str):
     print("\n" + "=" * 70)
     print("  EVALUATION — Baseline (LLM only)  vs  SPARQL-RAG")
     print("=" * 70)
+
+    results_table = []
+
     for i, q in enumerate(EVAL_QUESTIONS, 1):
         print("\n" + "-" * 70)
         print(f"  Q{i}: {q}")
         print("-" * 70)
+
+        # Baseline answer (no RAG)
         print("\n  [Baseline — direct LLM]")
         baseline = answer_baseline(q, model)
+        baseline_short = baseline[:300].replace("\n", " ").strip()
         print("  " + baseline[:400].replace("\n", "\n  "))
+
+        # RAG answer
         print("\n  [RAG — SPARQL + rdflib]")
-        pretty_print(answer_rag(g, schema, q, model))
-    print("\n" + "=" * 70)
+        rag_result = answer_rag(g, schema, q, model)
+        pretty_print(rag_result)
+
+        # Determine RAG answer summary
+        method = rag_result.get("method", "none")
+        if method == "hybrid":
+            rag_short = (rag_result.get("hybrid") or "")[:300].replace("\n", " ").strip()
+            has_data = True
+        elif rag_result.get("rows"):
+            # Summarize SPARQL results
+            n_rows = len(rag_result["rows"])
+            sample = " | ".join(rag_result["rows"][0]) if rag_result["rows"] else ""
+            rag_short = f"{n_rows} results. First: {sample[:200]}"
+            has_data = True
+        else:
+            rag_short = rag_result.get("error", "No results")
+            has_data = False
+
+        results_table.append({
+            "question": q,
+            "baseline": baseline_short,
+            "rag_answer": rag_short,
+            "method": method,
+            "has_data": has_data,
+        })
+
+    # Print summary evaluation table
+    print("\n\n" + "=" * 70)
+    print("  EVALUATION SUMMARY TABLE")
+    print("=" * 70)
+    print(f"\n  Model: {model}")
+    print(f"  KB: {find_nt_file()} ({len(g):,} triples)")
+    print()
+    print(f"  {'#':<3} {'Method':<12} {'Has Data?':<10} {'Question'}")
+    print(f"  {'─'*3} {'─'*12} {'─'*10} {'─'*40}")
+    for i, r in enumerate(results_table, 1):
+        data_flag = "YES" if r["has_data"] else "NO"
+        print(f"  {i:<3} {r['method']:<12} {data_flag:<10} {r['question'][:50]}")
+
+    correct_count = sum(1 for r in results_table if r["has_data"])
+    print(f"\n  RAG returned data for {correct_count}/{len(results_table)} questions")
+    print(f"  Methods used: {', '.join(set(r['method'] for r in results_table))}")
+
+    print("\n  Key observations:")
+    print("  - Baseline (LLM only) answers from parametric knowledge — may hallucinate.")
+    print("  - RAG answers are grounded in the KB — factually verifiable.")
+    print("  - When SPARQL returns no results, the hybrid fallback uses KB triples as context.")
+    print("  - Self-repair helps recover from initial SPARQL generation errors.")
+    print("=" * 70)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -713,6 +866,7 @@ if __name__ == "__main__":
 
     nt_path = find_nt_file()
     g       = load_graph(nt_path)
+    build_label_index(g)
     schema  = build_schema_summary(g)
 
     print("\n[Schema summary (excerpt)]")

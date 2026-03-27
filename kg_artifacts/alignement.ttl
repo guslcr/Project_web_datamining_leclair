@@ -4,9 +4,23 @@
 
 <http://lab_web4.org/predicate/consommer> owl:equivalentProperty <http://www.wikidata.org/entity/P8891> .
 
+<http://lab_web4.org/predicate/fieldOfWork> owl:equivalentProperty <http://www.wikidata.org/entity/P101> .
+
+<http://lab_web4.org/predicate/foundedBy> owl:equivalentProperty <http://www.wikidata.org/entity/P112> .
+
+<http://lab_web4.org/predicate/headquarterIn> owl:equivalentProperty <http://www.wikidata.org/entity/P159> .
+
+<http://lab_web4.org/predicate/industryOf> owl:equivalentProperty <http://www.wikidata.org/entity/P452> .
+
+<http://lab_web4.org/predicate/locatedIn> owl:equivalentProperty <http://www.wikidata.org/entity/P495> .
+
 <http://lab_web4.org/predicate/node> owl:equivalentProperty <http://www.wikidata.org/entity/P31> .
+
+<http://lab_web4.org/predicate/ownedBy> owl:equivalentProperty <http://www.wikidata.org/entity/P127> .
 
 <http://lab_web4.org/predicate/permettre> owl:equivalentProperty <http://www.wikidata.org/entity/P366> .
 
 <http://lab_web4.org/predicate/supply> owl:equivalentProperty <http://www.wikidata.org/entity/P1092> .
+
+<http://lab_web4.org/predicate/wonAward> owl:equivalentProperty <http://www.wikidata.org/entity/P166> .
 

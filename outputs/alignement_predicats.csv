@@ -4,5 +4,11 @@ Private Predicate,Wikidata Property,Wikidata Label,Relation,Validate
 :permettre,P366,has use,owl:equivalentProperty,manual check needed
 :encourager,N/A,Not found,N/A,—
 :supply,P1092,total produced,owl:equivalentProperty,manual check needed
-:blockchain,N/A,Not found,N/A,—
 :node,P31,instance of,owl:equivalentProperty,manual check needed
+:wonAward,P166,award received,owl:equivalentProperty,manual check needed
+:fieldOfWork,P101,field of work,owl:equivalentProperty,manual check needed
+:foundedBy,P112,founded by,owl:equivalentProperty,manual check needed
+:locatedIn,P495,country of origin,owl:equivalentProperty,manual check needed
+:headquarterIn,P159,headquarters location,owl:equivalentProperty,manual check needed
+:ownedBy,P127,owned by,owl:equivalentProperty,manual check needed
+:industryOf,P452,industry,owl:equivalentProperty,manual check needed

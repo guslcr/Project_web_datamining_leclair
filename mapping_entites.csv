@@ -1,0 +1,13 @@
+Private Entity,External URI,Wikidata ID,Description,Confidence,Status
+:Bitcoin,http://www.wikidata.org/entity/Q131723,Q131723,digital cash system and associated currency,0.99,aligned
+:Ethereum,http://www.wikidata.org/entity/Q16783523,Q16783523,public blockchain platform with programmable transaction functionality,0.99,aligned
+:Satoshi_Nakamoto,http://www.wikidata.org/entity/Q13382352,Q13382352,pseudonym for the person or group who designed and developed Bitcoin,0.99,aligned
+:Jack_Dorsey,http://www.wikidata.org/entity/Q335552,Q335552,American software entrepreneur and co-founder of Twitter,0.99,aligned
+:Elon_Musk,http://www.wikidata.org/entity/Q317521,Q317521,businessman and entrepreneur (born 1971),0.99,aligned
+:Adam_Back,http://www.wikidata.org/entity/Q348671,Q348671,British cryptographer,0.99,aligned
+:Joseph_Stiglitz,http://www.wikidata.org/entity/Q18430,Q18430,"American economist, professor, and recipient of the Nobel Memorial Prize in Economics",0.9,aligned
+:Microsoft,http://www.wikidata.org/entity/Q2283,Q2283,American multinational technology corporation,0.99,aligned
+:University_of_Cambridge,http://www.wikidata.org/entity/Q35794,Q35794,"collegiate public research university in Cambridge, England, United Kingdom",0.99,aligned
+:Bank_of_England,http://www.wikidata.org/entity/Q183231,Q183231,central bank of the United Kingdom,0.99,aligned
+:Bank_of_China,http://www.wikidata.org/entity/Q790068,Q790068,state-owned bank in China,0.99,aligned
+:Visa,http://www.wikidata.org/entity/Q328840,Q328840,American multinational financial services corporation,0.9,aligned
